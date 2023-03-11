@@ -18,15 +18,15 @@ const Navbar = (props) => {
 
         <form className="col-md-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" action="/search" method="get">
           <input type="search" className="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search"/>
-          {/* <div className="form-group col-md-4 dropdown">
+          <div className="form-group col-md-4 dropdown">
             <select name="filter"  className="form-control">
+              <option >location</option>
               <option>name</option>
-              <option selected>location</option>
               <option>email</option>
               <option>place</option>
               <option>mark</option>
             </select>
-          </div> */}
+          </div>
         </form>
         {/* <div className="text-end">
           <Link to="/auth/logout" className="btn btn-outline-light me-2">Logout</Link>

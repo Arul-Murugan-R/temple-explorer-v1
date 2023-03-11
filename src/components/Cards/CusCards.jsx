@@ -9,7 +9,7 @@ const CusCards = () => {
     const [products, setProduct] = useState([])
     const productData = async () => {
         try {
-            const res = await fetch('https://temple-api.vercel.app/home', {
+            const res = await fetch(import.meta.env.VITE_BACKEND+'/home', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -30,9 +30,9 @@ const CusCards = () => {
     // return (<h1>Testing</h1>);
     if (loading) {
         return (
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
                 </div>
             </div>
         )
@@ -56,7 +56,7 @@ const CusCards = () => {
 
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     {products.map((product) => (
-                        <div className="col">
+                        <div className="col" key={product._id}>
                             <div className="mt-5 card shadow-sm">
                                 <img className="bd-placeholder-img card-img-top overflow-hidden" width="100%" height="200" src={product.photo} alt="" />
 

@@ -1,0 +1,49 @@
+
+/*
+The thing i faced today 11/3 cannot be forgetted
+
+I was trying to send a image to the server but it was not working
+I was getting a error that the image is not set error from backend while sending through backend tried several ways 
+
+------------ 1st way ----------------
+I was sending the image as a base64 string but it was not working
+------------ 2nd way ----------------
+Only file through formData other data through state
+------------ 3rd way ----------------
+URL.createObjectURL(e.target.files[0])
+provide me with a blog but not accepted by backend
+------------ 4th way ----------------
+I was sending the all contents like name,place,photo through formData it finally worked
+
+
+------------ Solution --------------------
+
+const pushData = async(data) => {
+      console.log(data)
+        const res = await fetch('https://temple'+'/add-yours',{
+            method:'POST',
+            body:data,
+        })
+        const resData = await res.json()
+        console.log(resData)
+    }
+    const FormHandler = (e) => {
+        if(e.target.name=='photo'){
+          formData.append('photo',e.target.files[0])
+          return
+        }
+        formData.append(e.target.name,e.target.value)
+
+    }
+    const submitHandler = async (e) => {
+        e.preventDefault()
+        formData.append('user','63f8b805e47e65d23abdbaf1')
+        console.log(formData);
+
+        await pushData(formData)
+        await navigate('/home')
+        
+    }
+
+
+*/

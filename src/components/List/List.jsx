@@ -15,7 +15,7 @@ const List = () => {
     }
     const productData = async () => {
         try {
-            const res = await fetch('https://temple-api.vercel.app/home', {
+            const res = await fetch(import.meta.env.VITE_BACKEND+'/home', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -29,6 +29,26 @@ const List = () => {
             setLoading(false)
             setError(err)
         }
+    }
+    const deleteHandler = async (id) => {
+        console.log(id)
+        try {
+            setLoading(true)
+            const res = await fetch(import.meta.env.VITE_BACKEND+'/delete/'+id, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":"bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxMjNAZ21haWwuY29tIiwidXNlcklkIjoiNjNmOGI4MDVlNDdlNjVkMjNhYmRiYWYxIiwiaWF0IjoxNjc3OTQxMDE3LCJleHAiOjE2Nzg1NDU4MTd9.kuWyJrUNVCzrqc9YhjuKKDrHdD8VnQKcXIcWaESuKLE"
+                },
+            })
+            const data = await res.json()
+            console.log(data);
+            productData()
+        } catch (err) {
+            console.log(err)
+            setLoading(false)
+            setError(err)
+        }   
     }
     useEffect(() => {
         productData()
@@ -76,7 +96,7 @@ const List = () => {
             </thead>
             <tbody>
             {products.map((product) => (
-              <tr>
+              <tr key={product._id}>
                 <th scope="row">{i++}</th>
                 <td className="disable">{product._id}</td>
                 <td >{product.name} </td>
@@ -84,7 +104,7 @@ const List = () => {
                 <td className="btn-group">
                   <Link to={"/view-page/"+product._id} className="btn btn-outline-success">View</Link>
                     <Link to="/edit/" className="btn btn-outline-primary">Edit</Link>
-                    <Link to="/delete/" className="btn btn-outline-danger">Delete</Link></td>
+                    <Link onClick={()=>{deleteHandler(product._id)}} className="btn btn-outline-danger">Delete</Link></td>
               </tr>
             ))}
             </tbody>

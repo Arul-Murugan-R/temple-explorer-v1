@@ -1,0 +1,15 @@
+// if(e.target.name=='photo'){
+      //   console.log(e.target.files);
+      //   const formDataB = new FormData();
+      //   formDataB.append('photo',e.target.files)
+      //   console.log(formDataB);
+      //   // const file = URL.createObjectURL(event.target.files[0])
+      //   // console.log(file);
+      //   setFormData({...formData,[e.target.name]:JSON.parse(URL.createObjectURL(e.target.files[0]))})
+      //   return
+      // }
+        // console.log(e.target.name,e.target.value);
+        // setFormData({...formData,[e.target.name]:e.target.value})
+
+
+        ///////////////////////////
