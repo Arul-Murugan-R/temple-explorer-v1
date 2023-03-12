@@ -38,8 +38,7 @@ const List = () => {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxMjNAZ21haWwuY29tIiwidXNlcklkIjoiNjNmOGI4MDVlNDdlNjVkMjNhYmRiYWYxIiwiaWF0IjoxNjc3OTQxMDE3LCJleHAiOjE2Nzg1NDU4MTd9.kuWyJrUNVCzrqc9YhjuKKDrHdD8VnQKcXIcWaESuKLE"
-                },
+                    "Authorization":"bearer "+import.meta.env.VITE_TOKEN},
             })
             const data = await res.json()
             console.log(data);
